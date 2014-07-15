@@ -4,11 +4,19 @@
 <p>
   there's a bug in the calculator! it works for - / and *, but adding is crazy!
 </p>
+<h3>
+  Solution
+</h3>
 <p>
-  see if you can figure out how to fix this (work in view.html & controller.js)
+  as you can see, the type is a string (not a number)
 </p>
 <p>
-  if you can't, check out the hint!
-  <code>git checkout hint1</code>
+  there's two ways to fix this. Either we can parseInt num1 and num2 into numbers in the controller using
+</p>
+<p>
+  $scope.ans = parseInt($scope.num1) + parseInt($scope.num2);
+</p>
+<p>
+  or, we can put a type="number" attribute on the input elements (this is better because it tells the browser how to render)
 </p>
 <hr>

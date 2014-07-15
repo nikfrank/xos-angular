@@ -9,7 +9,6 @@ angular.module('calculator')
 	$scope.ans = 0;
 
 	$scope.add = function(){
-	    console.log(typeof $scope.num1);
 	    $scope.ans = $scope.num1 + $scope.num2;
 	};
 

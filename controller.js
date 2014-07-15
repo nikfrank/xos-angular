@@ -9,6 +9,7 @@ angular.module('calculator')
 	$scope.ans = 0;
 
 	$scope.add = function(){
+	    alert('the typeof num1 is '+(typeof $scope.num1)+' and num2 is a '+(typeof $scope.num2));
 	    $scope.ans = $scope.num1 + $scope.num2;
 	};
 

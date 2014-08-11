@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="vendor/bootstrap.css">
 
   </head>
-  <body ng-app="calculator">
+  <body ng-app="calculator" id="app-container">
 
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
-          <a class="brand" href="#">Nik's Web Lessons</a>
+          <a class="brand" href="#">THT</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
 	      <li>
@@ -30,7 +30,7 @@
     </div>
     
     <div class="ng-view-container">
-      <div ng-view></div>
+      <div ng-view class="ng-view-instance"></div>
     </div>
 
     <script src="vendor/angular.min.js"></script>

@@ -1,6 +1,11 @@
 .ng-view-container {
     margin-top:40px;
     padding:12px;
+
+    width:720px;
+    height:380px;
+
+    background-color:#f44;
 }
 
 hr {

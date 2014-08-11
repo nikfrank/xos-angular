@@ -32,7 +32,7 @@ phantom.create(function(ph) {
 
   ph.createPage(function(page) {
 
-    page.open("http://localhost:8118/topic/angular/index.html", function(status) {
+    page.open("http://localhost:8118/topic/xos-angular/index.html", function(status) {
 	page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js", function() {
 	    console.log(status);
 	    

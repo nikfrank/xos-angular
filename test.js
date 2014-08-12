@@ -11,9 +11,11 @@ phantom.create(function(ph) {
 	fs.watch('test.jpg', function (curr, prev) {
 	    // from here, we need a one time use hash to put in the request from main app
 	    // then the app will check the ip and accept the upload from phantom
+console.log('checking file');
 
 	    fs.stat('test.jpg', function (err, stats) {
-		console.log(stats.size);
+
+		console.log(stats.size, 'starting upload?');
 		if(stats.size<10) return;
 		if(hassent) return;
 		hassent = true;
@@ -32,22 +34,23 @@ phantom.create(function(ph) {
 
   ph.createPage(function(page) {
 
-    page.open("http://localhost:8118/topic/xos-angular/index.html", function(status) {
-	page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js", function() {
+    page.open("http://localhost:8118/topic/angular/index.html", function(status) {
+	page.includeJs("http://localhost:8118/topic/angular/vendor/jquery-1.6.1.min.js", function() {
 	    console.log(status);
 	    
 
 	    page.evaluate((function() {
 		return [$('#num1').offset(), $('#num2').offset()];
 	    }), function(offsets){
+console.log('doing tests');
 		page.sendEvent('click', offsets[0].left + 4, offsets[0].top + 4);
 		page.sendEvent('keypress', '2');
 
 		page.sendEvent('click', offsets[1].left + 4, offsets[1].top + 4);
 		page.sendEvent('keypress', '3');
 
-
-		page.evaluate((function() {
+console.log('done typing');
+		var result = page.evaluate(function() {
 
 		    var scope = angular.element(
 			document.getElementsByClassName('ng-view-instance')[0]).scope();
@@ -56,14 +59,14 @@ phantom.create(function(ph) {
 
 		    $($('button')[0]).trigger('click');
 
-		    return scope;
+		    return scope.ans;
 
-		}), function(result) {
-		    console.log(result);
-
-		    page.render('test.jpg');
-		    ph.exit();
 		});
+
+		console.log('done tests', result);
+
+		page.render('test.jpg');
+		ph.exit();
 	    });
 	});
 

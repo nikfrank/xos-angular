@@ -6,4 +6,9 @@ angular.module('gft')
 	// pull the schedule from the schedule service
 	// attach to schedule directive
 
+	$scope.dayNames = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa'];
+
+	
+
+
     });

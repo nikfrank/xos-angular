@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gft')
-  .service('usrs', function($http, $q, workouts, schedules, exercises){
+  .service('usrs', function($http, $q){
 
       var that = this;
 

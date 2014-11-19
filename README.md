@@ -1,8 +1,27 @@
-placeholder for section folder
+writing here:
 
-novice code-monkeying section
-
+basic event scheduler app for exercise
 
 todo::
 
-write simple calculator app, save two branches & walkthrough.html
+controllers:
+schedule
+workout popover
+exercise popover
+
+views:
+schedule
+workout popover
+exercise popover
+
+directives:
+schedule day
+workout
+exercise
+
+services:
+exercise service
+workout service
+schedule service
+feedback service
+((usrs services))

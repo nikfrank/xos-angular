@@ -6,8 +6,7 @@
   </thead>
   <tr ng-repeat="week in weeks">
     <td ng-repeat="dayName in dayNames">
-      {{$parent.$index}}
-      {{$index}}
+      <div day="workoutsDuring($index, week)"></div>
     </td>
   </tr>
 </table>

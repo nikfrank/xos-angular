@@ -3,17 +3,22 @@
 angular.module('gft')
   .directive('day', function () {
     return {
-	templateUrl: '/scripts/directives/day.html',
+	templateUrl: '/topic/xos-angular/scripts/directives/day.html',
 	restrict: 'A',
-	scope:true,
+	scope:{
+	    workouts:'=day'
+	},
 	transclude:false,
-	controller: function($rootScope, $scope) {
+	controller: function($scope){
 
-	    $scope.landmarks = {};
-	    $scope.togglelandmark = function(k,v){
-		if($scope.landmarks[k] === v) return delete $scope.landmarks[k];
-		$scope.landmarks[k] = v;
-	    };
+	    console.log($scope.$parent.week, $scope.$parent.$index);
+
+	    // day needs to be inside a week?
+	    $scope.week = $scope.$parent.week;
+	    var dayOfWeek = $scope.$parent.$index;
+	    $scope.day = $scope.week.start.getDate() + dayOfWeek;
+
+	    console.log($scope.workouts);
 
 	}
     };

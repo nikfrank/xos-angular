@@ -1,18 +1,3 @@
-.ng-view-container {
-    padding:12px;
-
-    width:720px;
-    height:380px;
-
-    background-color:#4f4;
-}
-
-hr {
-    background-color:red;
-    width:60%;
-    height:4px;
-}
-
 .sched-day {
     height:40px;
     width:40px;

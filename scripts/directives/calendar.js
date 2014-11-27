@@ -25,20 +25,30 @@ angular.module('gft')
 		$scope.workouts = workouts;
 		
 		// push all weeks containing workouts to the schedule
+		// convert the dates into javascript objects
 
 	    });
 
 	    var curr = new Date;
-	    $scope.weeks = [
-		{start:new Date(curr.setDate(curr.getDate()-curr.getDay())),
-		 end:new Date(curr.setDate(curr.getDate()-curr.getDay()+6))}
-	    ];
+	    $scope.weeks = [];
+
+	    for(var i=6; i-->0;){
+		(function(j){
+		    var week = {};
+		    week.start = new Date;
+		    week.start.setDate(curr.getDate()-curr.getDay()-j*7);
+		    
+		    week.end = new Date;
+		    week.end.setDate(curr.getDate()-curr.getDay()+6-j*7);
+
+		    $scope.weeks[j] = week;
+		})(i);
+	    }
 
 	    var wcache = {};
 
 	    $scope.workoutsDuring = function(day, week, force){
-		if((''+day+'||'+week in wcache)&&(!force))
-		    return wcache[''+day+'||'+week];
+		if((''+day+'||'+week in wcache)&&(!force)) return wcache[''+day+'||'+week];
 		var ret = [];
 		for(var i=$scope.workouts.length; i-->0;){
 		    var sc = $scope.workouts[i].scheduled;

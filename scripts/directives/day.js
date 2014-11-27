@@ -11,12 +11,14 @@ angular.module('gft')
 	transclude:false,
 	controller: function($scope){
 
-	    console.log($scope.$parent.week, $scope.$parent.$index);
-
 	    // day needs to be inside a week?
 	    $scope.week = $scope.$parent.week;
 	    var dayOfWeek = $scope.$parent.$index;
-	    $scope.day = $scope.week.start.getDate() + dayOfWeek;
+	    
+	    var today = new Date($scope.week.start);
+	    today.setDate($scope.week.start.getDate() + dayOfWeek);
+
+	    $scope.day = today.getDate();
 
 	    console.log($scope.workouts);
 

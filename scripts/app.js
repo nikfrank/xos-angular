@@ -9,6 +9,6 @@ angular.module('gft', ['ngRoute'])
 	    .otherwise({redirectTo: '/'});
     });
 
-document.body.addEventListener('touchmove',function(event){
+document.body.addEventListener('touchmove', function(event) {
     event.preventDefault();
-});
+}, false);

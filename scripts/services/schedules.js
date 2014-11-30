@@ -10,7 +10,7 @@ angular.module('gft')
       var resultDemo = function(j, done){
 	  var ret = {
 	      scheduled:(new Date(2014, 10, j + 23, 11)),
-	      sceduledduration:30,
+	      scheduledduration:30,
 	      workout:'hash'+j,
 	      usr:'hash',
 	      exercises:['hash1', 'hash2', 'hash3'],
@@ -21,7 +21,6 @@ angular.module('gft')
 	      cardio:Math.random()*100,
 	      str:Math.random()*100
 	  };
-
 	  if(done){
 	      ret.fulfilled = (new Date(2014, 10, j + 23, 11));
 	      ret.duration = 31;

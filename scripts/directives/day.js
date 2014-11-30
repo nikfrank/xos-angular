@@ -20,7 +20,9 @@ angular.module('gft')
 
 	    $scope.day = today.getDate();
 
-	    console.log($scope.workouts);
+	    $scope.popWorkout = function(workout){
+		$scope.$parent.openWorkout(workout);
+	    };
 
 	}
     };

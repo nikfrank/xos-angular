@@ -1,3 +1,26 @@
-<div ng-class="">
-  
+<div class="fodalvis" ng-click="close()">
+  <div class="fodal-popup" ng-click="noclose($event)">
+
+    <p>
+      {{workout.scheduled}}
+      {{workout.scheduledduration}}
+    </p>
+
+    <div ng-repeat="exercise in workout.exercises">
+      {{exerciseName(exercise)}} - {{workout.results[$index]}}
+    </div>
+
+    <p>
+      {{workout.flex}}
+      {{workout.cardio}}
+      {{workout.str}}
+    </p>
+
+    <button ng-click="startWorkout()" ng-hide="inprogress" class="btn btn-success">
+      Start!</button>
+    <button ng-click="pauseWorkout()" ng-show="inprogress" class="btn btn-default">
+      Pause!</button>
+
+  </div>
 </div>
+

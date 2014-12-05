@@ -3,17 +3,20 @@
 angular.module('gft')
   .directive('workout', function () {
     return {
-	templateUrl: '/scripts/directives/workout.html',
+	templateUrl: '/topic/xos-angular/scripts/directives/workout.html',
 	restrict: 'A',
-	scope:true,
+	scope:{workout:'='},
 	transclude:false,
-	controller: function($rootScope, $scope) {
+	controller: function($rootScope, $scope, exercises){
 
-	    $scope.landmarks = {};
-	    $scope.togglelandmark = function(k,v){
-		if($scope.landmarks[k] === v) return delete $scope.landmarks[k];
-		$scope.landmarks[k] = v;
+	    console.log($scope.exercises);
+
+	    $scope.close = $scope.$parent.closeWorkout;
+	    $scope.noclose = function(e){
+		e.stopPropagation();	
 	    };
+
+	    $scope.exerciseName = exercises.nameByHash;
 
 	}
     };

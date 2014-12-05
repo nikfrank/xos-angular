@@ -1,1 +1,21 @@
-<div calendar></div>
+<div ng-show="landmarks.pagetab == 'schedule'">
+  <div calendar></div>
+</div>
+<div ng-show="landmarks.pagetab == 'create'">
+  <div create></div>
+</div>
+<div ng-show="landmarks.pagetab == 'results'">
+  <div results></div>
+</div>
+
+<div class="bottom-bar">
+  <div class="page-tab page-tab-left" ng-click="setLandmark('pagetab','schedule')">
+    Schedule
+  </div>
+  <div class="page-tab page-tab-middle" ng-click="setLandmark('pagetab','create')">
+    Create
+  </div>
+  <div class="page-tab page-tab-right" ng-click="setLandmark('pagetab','results')">
+    Results
+  </div>
+</div>

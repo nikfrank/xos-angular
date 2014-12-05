@@ -5,11 +5,14 @@ angular.module('gft')
 
       var that = this;
 
-      this.whatever = 'something';
+// cache the exercises, make them queryable
 
-      this.makeSchedule = function(options){
-	  // pull each workout
+      this.nameByHash = function(hash){
+	  return {
+	      hash1:'Pull ups',
+	      hash2:'Push ups',
+	      hash3:'Crunches'
+	  }[hash];
       };
-
 
   });

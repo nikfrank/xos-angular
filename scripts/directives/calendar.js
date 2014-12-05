@@ -32,7 +32,7 @@ angular.module('gft')
 	    var curr = new Date;
 	    $scope.weeks = [];
 
-	    for(var i=6; i-->0;){
+	    for(var i=4; i-->0;){
 		(function(j){
 		    var week = {};
 		    week.start = new Date;

@@ -7,7 +7,7 @@ angular.module('gft')
 	restrict: 'A',
 	scope:true,
 	transclude:false,
-	controller: function($scope, schedules) {
+	controller: function($scope, results){
 
 	    $scope.landmarks = {};
 	    $scope.setLandmark = function(k,v){
@@ -21,7 +21,7 @@ angular.module('gft')
 
 	    $scope.dayNames = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa'];
 
-	    schedules.get().then(function(workouts){
+	    results.getSchedule().then(function(workouts){
 		$scope.workouts = workouts;
 		$scope.currentWorkout = {};
 		// push all weeks containing workouts to the schedule

@@ -9,8 +9,6 @@ angular.module('gft')
 	transclude:false,
 	controller: function($rootScope, $scope, exercises){
 
-	    console.log($scope.exercises);
-
 	    $scope.close = $scope.$parent.closeWorkout;
 	    $scope.noclose = function(e){
 		e.stopPropagation();	

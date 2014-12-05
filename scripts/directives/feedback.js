@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('gft')
-  .directive('results', function () {
+  .directive('feedback', function () {
     return {
-	templateUrl: '/topic/xos-angular/scripts/directives/results.html',
+	templateUrl: '/topic/xos-angular/scripts/directives/feedback.html',
 	restrict: 'A',
 	scope:true,
 	transclude:false,
-	controller: function($rootScope, $scope, schedules){
+	controller: function($rootScope, $scope, results, exercises){
 
 	    $scope.landmarks = {};
 	    $scope.togglelandmark = function(k,v){
@@ -20,12 +20,13 @@ angular.module('gft')
 	    $scope.start = new Date(2014, 10, 23, 0, 0, 0, 1);
 	    $scope.end = new Date(2014, 10, 29, 23, 59, 59, 999);
 
-	    schedules.get().then(function(){
-		schedules.getResults($scope.start, $scope.end).then(function(results){
-		    $scope.results = results;
-		});
+	    $scope.results = [];
+
+	    results.getByDate($scope.start, $scope.end).then(function(results){
+		$scope.results = results;
 	    });
 
+	    $scope.exerciseName = exercises.nameByHash;
 
 	}
     };

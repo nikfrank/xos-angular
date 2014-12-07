@@ -9,12 +9,27 @@ angular.module('gft')
 	transclude:false,
 	controller: function($rootScope, $scope, exercises){
 
-	    $scope.close = $scope.$parent.closeWorkout;
+	    $scope.close = function(){
+		$scope.$parent.closeWorkout();
+		$scope.pauseWorkout();
+	    };
+
 	    $scope.noclose = function(e){
 		e.stopPropagation();	
 	    };
 
 	    $scope.exerciseName = exercises.nameByHash;
+
+	    $scope.inprogress = false;
+
+	    $scope.pauseWorkout = function(){
+		$scope.inprogress = false;
+		// save progress?
+	    };
+
+	    $scope.startWorkout = function(){
+		$scope.inprogress = true;
+	    };
 
 	}
     };

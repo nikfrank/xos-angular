@@ -20,8 +20,13 @@ angular.module('gft')
 
 	    $scope.day = today.getDate();
 
-	    $scope.popWorkout = function(workout){
+	    $scope.popWorkout = function(workout, e){
+		e.stopPropagation();
 		$scope.$parent.openWorkout(workout);
+	    };
+
+	    $scope.makeWorkout = function(day){
+		console.log('make on ', day);
 	    };
 
 	}

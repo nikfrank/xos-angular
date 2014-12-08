@@ -7,7 +7,7 @@ angular.module('gft')
 	restrict: 'A',
 	scope:{workout:'='},
 	transclude:false,
-	controller: function($rootScope, $scope, exercises){
+	controller: function($rootScope, $scope, exercises, results){
 
 	    $scope.close = function(){
 		$scope.$parent.closeWorkout();
@@ -25,11 +25,19 @@ angular.module('gft')
 	    $scope.pauseWorkout = function(){
 		$scope.inprogress = false;
 		// save progress?
+		results.saveProgress($scope.workout);
+		
 	    };
 
 	    $scope.startWorkout = function(){
 		$scope.inprogress = true;
 	    };
+
+
+	    $scope.doneExercise = function(index){
+		$scope.workout.results[index] = 1;
+	    };
+
 
 	}
     };

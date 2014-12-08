@@ -1,13 +1,13 @@
 <div class="fodalvis" ng-click="close()">
   <div class="fodal-popup" ng-click="noclose($event)">
-
     <p>
       {{workout.scheduled}}
       {{workout.scheduledduration}}
     </p>
 
     <div ng-repeat="exercise in workout.exercises">
-      {{exerciseName(exercise)}} - {{workout.results[$index]}}
+      {{exerciseName(exercise)}} - {{workout.results[$index]}} -
+      <button ng-click="doneExercise($index)" ng-hide="workout.results[$index]">Done!</button>
     </div>
 
     <p>

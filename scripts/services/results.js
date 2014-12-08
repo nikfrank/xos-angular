@@ -39,13 +39,21 @@ angular.module('gft')
 
 	  if(that.sched.length) def.resolve(that.sched);
 	  else{
-	      fakehttp.getSchedule().then(function(sched){
+	      fakehttp.get('/schedule').then(function(sched){
+// this is where results coagulate into workouts
+
+
 		  that.sched = sched;
 		  def.resolve(that.sched);
 	      });
 	  }
-
 	  return def.promise;
+      };
+
+
+      this.saveProgress = function(workout){
+	  // split out the results
+	  
       };
 
   });

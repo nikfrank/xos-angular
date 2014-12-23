@@ -19,6 +19,8 @@ angular.module('gft')
 	    today.setDate($scope.week.start.getDate() + dayOfWeek);
 
 	    $scope.day = today.getDate();
+	    $scope.month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'
+			   ][today.getMonth()];
 
 	    $scope.popWorkout = function(workout, e){
 		e.stopPropagation();

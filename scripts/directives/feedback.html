@@ -1,5 +1,31 @@
-<div class="results">
-  <div ng-repeat="result in results">
-    {{result.date}} - {{exerciseName(result.exercise)}} - {{result.result}}
+<div class="top-bar">
+  <div class="page-tab page-tab-left" ng-click="setLandmark('tab','recent')">
+    Recent
   </div>
+  <div class="page-tab page-tab-middle" ng-click="setLandmark('tab','datechart')">
+    Time Chart
+  </div>
+  <div class="page-tab page-tab-right" ng-click="setLandmark('tab','exercisechart')">
+    Exercise Chart
+  </div>
+</div>
+
+<p>&nbsp;</p>
+
+<div ng-switch="landmarks.tab">
+  
+  <div ng-switch-when="recent">
+    <div class="results">
+      <div ng-repeat="result in results">
+	{{result.date}} - {{result.exercise.name}} - {{result.result.score}} <br>
+      </div>
+    </div>
+  </div>
+  <div ng-switch-when="datechart">
+    datechart
+  </div>
+  <div ng-switch-when="exercisechart">
+    exercisechart
+  </div>
+
 </div>

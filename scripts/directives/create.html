@@ -1,1 +1,33 @@
-create
+<div class="top-bar">
+  <div class="page-tab page-tab-left" ng-click="setLandmark('tab','add')">
+    Add to schedule
+  </div>
+  <div class="page-tab page-tab-middle" ng-click="setLandmark('tab','workout')">
+    New Workout
+  </div>
+  <div class="page-tab page-tab-right" ng-click="setLandmark('tab','exercise')">
+    Exercise
+  </div>
+</div>
+
+<p>&nbsp;</p>
+
+<div ng-switch="landmarks.tab">
+  <div ng-switch-when="add">
+    workout on schedule
+    list workouts
+    -> edit?
+  </div>
+  <div ng-switch-when="workout">
+    workout in library
+    list exercises
+    -> +/-
+    form
+  </div>
+  <div ng-switch-when="exercise">
+    execise in library
+    form
+  </div>
+</div>
+
+{{workouts}}

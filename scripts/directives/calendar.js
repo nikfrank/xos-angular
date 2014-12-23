@@ -11,23 +11,11 @@ angular.module('gft')
 
 	    $scope.landmarks = {};
 	    $scope.setLandmark = function(k,v){
-		if($scope.landmarks[k] === v) return delete $scope.landmarks[k];
 		$scope.landmarks[k] = v;
 	    };
 
 
-	    // pull the schedule from the schedule service
-	    // attach to schedule directive
-
 	    $scope.dayNames = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa'];
-
-	    results.getSchedule().then(function(workouts){
-		$scope.workouts = workouts;
-		$scope.currentWorkout = {};
-		// push all weeks containing workouts to the schedule
-		// convert the dates into javascript objects
-
-	    });
 
 	    var curr = new Date;
 	    $scope.weeks = [];
@@ -49,12 +37,12 @@ angular.module('gft')
 
 	    var wcache = {};
 
-	    $scope.workoutsDuring = function(day, week, force){
+	    var calcWorkoutsDuring = function(day, week, force){
 		if((''+day+'||'+week.start in wcache)&&(!force)){
 		    return wcache[''+day+'||'+week.start];
 		}
 		var ret = [];
-		for(var i=$scope.workouts.length; i-->0;){
+		for(var i=($scope.workouts||[]).length; i-->0;){
 		    var sc = $scope.workouts[i].scheduled;
 		    if((sc<week.end) && (sc>week.start) && (sc.getDay() === day))
 			ret.push($scope.workouts[i]);
@@ -63,6 +51,21 @@ angular.module('gft')
 		return ret;
 	    };
 
+	    $scope.workoutsDuring = []; // [week.start][dayNumber]
+
+
+	    results.getSchedule().then(function(workouts){
+		$scope.workouts = workouts;
+		$scope.currentWorkout = {};
+
+		for(var i=$scope.weeks.length; i-->0;){
+		    $scope.workoutsDuring[$scope.weeks[i].start] = [];
+		    for(var j=0; j<7; ++j){
+			$scope.workoutsDuring[$scope.weeks[i].start][j] =
+			    calcWorkoutsDuring(j, $scope.weeks[i], true);
+		    }
+		}
+	    });
 
 
 	    $scope.openWorkout = function(workout){

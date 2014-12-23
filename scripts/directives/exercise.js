@@ -11,7 +11,6 @@ angular.module('gft')
 
 	    $scope.landmarks = {};
 	    $scope.togglelandmark = function(k,v){
-		if($scope.landmarks[k] === v) return delete $scope.landmarks[k];
 		$scope.landmarks[k] = v;
 	    };
 

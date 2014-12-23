@@ -34,8 +34,8 @@ angular.module('gft')
 	    };
 
 
-	    $scope.doneExercise = function(index){
-		$scope.workout.results[index] = 1;
+	    $scope.doneExercise = function(result){
+		result.score = 1;
 	    };
 
 

@@ -5,9 +5,9 @@
       {{workout.scheduledduration}}
     </p>
 
-    <div ng-repeat="exercise in workout.exercises">
-      {{exerciseName(exercise)}} - {{workout.results[$index]}} -
-      <button ng-click="doneExercise($index)" ng-hide="workout.results[$index]">Done!</button>
+    <div ng-repeat="result in workout.results">
+      {{result.exercise.name}} - {{result.score}} -
+      <button ng-click="doneExercise(result)" ng-hide="result.score">Done!</button>
     </div>
 
     <p>

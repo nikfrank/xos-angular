@@ -11,7 +11,7 @@ angular.module('gft')
 	    workout:'hash'+(Math.floor(j/3)%4),
 	    exercise:'hash'+(j%6),
 	    usr:'hash1',
-	    date:(new Date(2014, 10, Math.floor(j/3) + 23, 11))
+	    date:(new Date(2014, 11, Math.floor(j/3) + 13, 11))
 	};
     });
 
@@ -28,87 +28,36 @@ angular.module('gft')
 
     var things = ['pull up', 'push up', 'sit up', 'lunge', 'step', 'twist'];
 
-    var eresults = Array.apply(null, new Array(6)).map(function(j){
+    var eresults = Array.apply(null, new Array(6)).map(function(n,j){
 	return {
 	    exercise_hash:'hash'+j,
+	    name:things[j],
 	    flex:Math.random()*100,
 	    cardio:Math.random()*100,
 	    str:Math.random()*100,
-	    duration:Math.random()*22,
+	    duration:Math.floor(Math.random()*35)/2,
 	    equipment:[],
-	    instructions:''+Math.random()*20+' '+things[j]+'s',
+	    instructions:''+Math.floor(Math.random()*15 + 5)+' '+things[j]+'s',
 	    media:[]
 	};
     });
+    var eindex = {};
+    for(var i=eresults.length; i-->0;) eindex[eresults[i].exercise_hash] = eresults[i];
     // end fake data
-
-    
 
     var that = this;
     
-    var sched = [];
-
-    var shuffle = function(a){
-	var ret = [];
-	while(a.length) ret.push(a.splice(Math.floor(Math.random()*a.length),1)[0]);
-	return ret;
-    };
-
-    var resultDemo = function(j, done){
-	var ret = {
-	    scheduled:(new Date(2014, 10, j + 23, 11)),
-	    scheduledduration:30,
-	    workout:'hash'+j,
-	    usr:'hash',
-	    exercises:shuffle(['hash1', 'hash2', 'hash3']),
-	    results:done?[Math.floor(Math.random()*1.99),
-			  Math.floor(Math.random()*1.99),
-			  Math.floor(Math.random()*1.99)]:[],
-	    flex:Math.random()*100,
-	    cardio:Math.random()*100,
-	    str:Math.random()*100
-	};
-	if(done){
-	    ret.fulfilled = (new Date(2014, 10, j + 23, 11));
-	    ret.duration = 31;
-	}
-	return ret;
-    };
-
-
-
-    var sched = [];
-    for(var i=4; i-->0;) sched.push(resultDemo(i, true));
-    for(var i=8; i-->4;) sched.push(resultDemo(i, false));
-
 
     this.get = function(route){
 	var def = $q.defer();
 
 	var ret = [];
 
-	if(route === '/schedule'){
+	if(route === '/results'){
+	    def.resolve({data:sresults});
 
-	    var bin = {};
-
-	    for(var i=sresults.length; i-->0;){
-		if(!(''+sresults[i].date in bin))
-		    bin[''+sresults[i].date] = {results:[sresults[i]]};
-		else
-		    bin[''+sresults[i].date].results.push(sresults[i]);
-	    }
-
-	    for(var date in bin){
-		ret.push({
-///
-//
-// format this to the needs of the view
-//
-///
-		});
-	    }
-	    
-	    def.resolve(sched);
+	}else if(route === '/workouts'){
+	    def.resolve({data:wresults});
 	}
 
 	return def.promise;
@@ -120,10 +69,13 @@ angular.module('gft')
 
 	if(route === '/result'){
 	    def.resolve({data:progress});
+
+	}else if(route === '/exercises'){
+	    // return from eresults
+	    var hashes = body.exercise_hash._$any; // mocking the db manager
+	    def.resolve({data:hashes.map(function(h){ return eindex[h];})});
 	}
 
 	return def.promise;
     };
-
-
 });

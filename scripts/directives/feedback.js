@@ -9,16 +9,15 @@ angular.module('gft')
 	transclude:false,
 	controller: function($rootScope, $scope, results, exercises){
 
-	    $scope.landmarks = {};
-	    $scope.togglelandmark = function(k,v){
-		if($scope.landmarks[k] === v) return delete $scope.landmarks[k];
+	    $scope.landmarks = {tab:'recent'};
+	    $scope.setLandmark = function(k,v){
 		$scope.landmarks[k] = v;
 	    };
 
 	    // pull results from the schedule
 
 	    $scope.start = new Date(2014, 10, 23, 0, 0, 0, 1);
-	    $scope.end = new Date(2014, 10, 29, 23, 59, 59, 999);
+	    $scope.end = new Date(2015, 10, 29, 23, 59, 59, 999);
 
 	    $scope.results = [];
 

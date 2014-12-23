@@ -7,7 +7,7 @@
 
     <div ng-repeat="result in workout.results">
       {{result.exercise.name}} - {{result.score}} -
-      <button ng-click="doneExercise(result)" ng-hide="result.score">Done!</button>
+      <button ng-click="doneExercise(result)" ng-hide="result.score||!inprogress">Done!</button>
     </div>
 
     <p>

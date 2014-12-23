@@ -1,10 +1,10 @@
-<div class="sched-day" ng-class="daystyle" ng-click="makeWorkout(day)">
-  <div ng-show="workouts.length == 0">
+<div class="sched-day" ng-class="daystyle">
+  <div ng-show="workouts.length == 0" ng-click="makeWorkout(day)" class="no-workout-day">
     <div ng-show="day>1">{{day}}</div>
     <div ng-show="day==1">{{month}}</div>
     <br>
   </div>
-  <div ng-repeat="workout in workouts" ng-click="popWorkout(workout, $event)">
+  <div ng-repeat="workout in workouts" ng-click="popWorkout(workout, $event)" class="workout-day">
     {{day}} <br>
     :{{workout.duration}}
   </div>

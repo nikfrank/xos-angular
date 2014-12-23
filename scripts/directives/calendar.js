@@ -31,7 +31,7 @@ angular.module('gft')
 		    week.end.setDate(curr.getDate()-curr.getDay()+6-j*7);
 		    week.end.setHours(23,59,59,999);
 
-		    $scope.weeks[j] = week;
+		    $scope.weeks[3-j] = week;
 		})(i);
 	    }
 

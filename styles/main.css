@@ -1,12 +1,18 @@
 .sched-day {
-    height:40px;
-    width:40px;
+    height:80px;
+    width:41px;
 
     border:1px solid black;
 }
 
-.pop-workout {
-    
+.no-workout-day {
+    height:100%;
+    width:100%;
+}
+
+.workout-day {
+    height:100%;
+    width:100%;
 }
 
 .fodalvis {
@@ -28,15 +34,12 @@
 
 .fodalvis .fodal-popup {
     position:fixed;
-    top:20%;
-    left:20%;
-    height:40%;
-    width:40%;
-
-    padding:6px;
+    top:8%;
+    left:10%;
+    height:80%;
+    width:80%;
 
     background-color:white;
-    border-radius:14px;
 }
 
 
@@ -107,4 +110,8 @@
     left:0;
     bottom:30px;
     width:100%;    
+}
+
+canvas {
+    padding:10px;
 }

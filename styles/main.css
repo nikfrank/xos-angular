@@ -1,3 +1,5 @@
+/* calendar stuff */
+
 .sched-day {
     height:80px;
     width:41px;
@@ -14,6 +16,35 @@
     height:100%;
     width:100%;
 }
+
+
+button.center {
+    margin-left:80px;
+    margin-top:10px;
+}
+
+.workout-exercise {
+    margin-left:10px;
+    height:30px;
+}
+
+.workout-exercise button {
+    float:right;
+    margin-right:40px;
+}
+
+.busy-day-cardio {
+    background-color:red;
+}
+.busy-day-str {
+    background-color:yellow;
+}
+.busy-day-flex {
+    background-color:green;
+}
+
+
+/* fodal stuff */
 
 .fodalvis {
     position:fixed;
@@ -41,6 +72,7 @@
 
     background-color:white;
 }
+
 
 
 /* bottom bar three-page directive */
@@ -121,19 +153,4 @@ canvas {
 ul.inline {
     margin-left:25px !important;
     margin-top:-10px;
-}
-
-button.center {
-    margin-left:80px;
-    margin-top:10px;
-}
-
-.workout-exercise {
-    margin-left:10px;
-    height:30px;
-}
-
-.workout-exercise button {
-    float:right;
-    margin-right:40px;
 }

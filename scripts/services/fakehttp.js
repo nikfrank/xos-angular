@@ -4,14 +4,14 @@ angular.module('gft')
 .service('fakehttp', function($q){
 
     // fake data PRO 2000
-    var sresults = Array.apply(null, new Array(20)).map(function(n,j){
+    var sresults = Array.apply(null, new Array(42)).map(function(n,j){
 	return {
 	    result_hash:'hash'+j,
-	    score:1-Math.floor(j/11),
+	    score:1-Math.floor(j/30),
 	    workout:'hash'+(Math.floor(j/3)%4),
 	    exercise:'hash'+(j%6),
 	    usr:'hash1',
-	    date:(new Date(2014, 11, Math.floor(j/3) + 13, 11))
+	    date:(new Date(2014, 11, Math.floor(j/3) + (new Date).getDate() - 10, 11))
 	};
     });
 
@@ -35,7 +35,7 @@ angular.module('gft')
 	    flex:Math.random()*100,
 	    cardio:Math.random()*100,
 	    str:Math.random()*100,
-	    duration:Math.floor(Math.random()*35)/2,
+	    duration:Math.floor(Math.random()*25+10)/2,
 	    equipment:[],
 	    instructions:''+Math.floor(Math.random()*15 + 5)+' '+things[j]+'s',
 	    media:[]
@@ -72,7 +72,9 @@ angular.module('gft')
 
 	}else if(route === '/exercises'){
 	    // return from eresults
-	    var hashes = body.exercise_hash._$any; // mocking the db manager
+	    var hashes = (body||{exercise_hash:{}}).exercise_hash._$any; // mocking the db manager
+	    if(!hashes) hashes = Object.keys(eindex); // return everything
+
 	    def.resolve({data:hashes.map(function(h){ return eindex[h];})});
 	}
 

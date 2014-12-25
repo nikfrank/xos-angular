@@ -1,24 +1,29 @@
 <div class="fodalvis" ng-click="close()">
   <div class="fodal-popup" ng-click="noclose($event)">
     <p>
+<!--bind once-->
       {{workout.scheduled}}
-      {{workout.scheduledduration}}
+    </p><p>
+      {{workout.duration}} minutes
     </p>
 
-    <div ng-repeat="result in workout.results">
+    <div ng-repeat="result in workout.results" class="workout-exercise">
       {{result.exercise.name}} - {{result.score}} -
       <button ng-click="doneExercise(result)" ng-hide="result.score||!inprogress">Done!</button>
     </div>
 
-    <p>
-      {{workout.flex}}
-      {{workout.cardio}}
-      {{workout.str}}
-    </p>
+    <img src="/topic/xos-angular/images/barbell.png" width="50" height="50"/>
+    <div ng-style="flexStyle"></div><br>
 
-    <button ng-click="startWorkout()" ng-hide="inprogress" class="btn btn-success">
+    <img src="/topic/xos-angular/images/stretch.png" width="50" height="50"/>
+    <div ng-style="strStyle"></div><br>
+
+    <img src="/topic/xos-angular/images/cardio.png" width="50" height="50"/>
+    <div ng-style="cardioStyle"></div><br>
+
+    <button ng-click="startWorkout()" ng-hide="inprogress" class="btn btn-success btn-large center">
       Start!</button>
-    <button ng-click="pauseWorkout()" ng-show="inprogress" class="btn btn-default">
+    <button ng-click="pauseWorkout()" ng-show="inprogress" class="btn btn-default btn-large center">
       Pause</button>
 
   </div>

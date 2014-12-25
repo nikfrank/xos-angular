@@ -1,11 +1,13 @@
-<div ng-show="landmarks.pagetab == 'schedule'">
-  <div calendar></div>
-</div>
-<div ng-show="landmarks.pagetab == 'create'">
-  <div create></div>
-</div>
-<div ng-show="landmarks.pagetab == 'results'">
-  <div feedback></div>
+<div ng-switch="landmarks.pagetab">
+  <div ng-switch-when="schedule">
+    <div calendar></div>
+  </div>
+  <div ng-switch-when="create">
+    <div create></div>
+  </div>
+  <div ng-switch-when="results">
+    <div feedback></div>
+  </div>
 </div>
 
 <div class="bottom-bar">

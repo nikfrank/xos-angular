@@ -20,18 +20,18 @@ angular.module('gft')
 	    var curr = new Date;
 	    $scope.weeks = [];
 
-	    for(var i=4; i-->0;){
+	    for(var i=3; i-->0;){
 		(function(j){
 		    var week = {};
 		    week.start = new Date;
-		    week.start.setDate(curr.getDate()-curr.getDay()-j*7);
+		    week.start.setDate(curr.getDate()-curr.getDay()-j*7 + 7);
 		    week.start.setHours(0,0,0,1);
 		    
 		    week.end = new Date;
-		    week.end.setDate(curr.getDate()-curr.getDay()+6-j*7);
+		    week.end.setDate(curr.getDate()-curr.getDay()+13-j*7);
 		    week.end.setHours(23,59,59,999);
 
-		    $scope.weeks[3-j] = week;
+		    $scope.weeks[2-j] = week;
 		})(i);
 	    }
 
@@ -80,3 +80,7 @@ angular.module('gft')
 	}
     };
   });
+
+
+// style "today" (day.js?), style each workout with icons/colors
+// fix up the workout popover

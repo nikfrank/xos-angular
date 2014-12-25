@@ -114,4 +114,26 @@
 
 canvas {
     padding:10px;
+    padding-top:0;
+    padding-bottom:0;
+}
+
+ul.inline {
+    margin-left:25px !important;
+    margin-top:-10px;
+}
+
+button.center {
+    margin-left:80px;
+    margin-top:10px;
+}
+
+.workout-exercise {
+    margin-left:10px;
+    height:30px;
+}
+
+.workout-exercise button {
+    float:right;
+    margin-right:40px;
 }

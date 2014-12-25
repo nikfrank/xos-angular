@@ -1,31 +1,36 @@
 <div class="top-bar">
-  <div class="page-tab page-tab-left" ng-click="setLandmark('tab','recent')">
+  <div class="page-tab page-tab-left" ng-click="setLandmark('tab','recentChart')">
     Recent
   </div>
-  <div class="page-tab page-tab-middle" ng-click="setLandmark('tab','datechart')">
+  <div class="page-tab page-tab-middle" ng-click="setLandmark('tab','dateChart')">
     Time Chart
   </div>
-  <div class="page-tab page-tab-right" ng-click="setLandmark('tab','exercisechart')">
+  <div class="page-tab page-tab-right" ng-click="setLandmark('tab','exerciseChart')">
     Exercise Chart
   </div>
 </div>
 
-<p>&nbsp;</p>
-
 <div ng-switch="landmarks.tab">
   
-  <div ng-switch-when="recent">
-    <div class="results">
-      <div ng-repeat="result in results">
-	{{result.date}} - {{result.exercise.name}} - {{result.result.score}} <br>
-      </div>
-    </div>
+  <div ng-switch-when="recentChart">
+    <canvas id="recentChart" height="400" width="300"></canvas>
+    <ul class="nav nav-pills inline">
+      <li ng-class="{active:landmarks.since=='week'}">
+	<a href="" ng-click="setLandmark('since','week')">This Week</a>
+      </li>
+      <li ng-class="{active:landmarks.since=='weeks'}">
+	<a href="" ng-click="setLandmark('since','weeks')">2 Weeks</a>
+      </li>
+      <li ng-class="{active:landmarks.since=='month'}">
+	<a href="" ng-click="setLandmark('since','month')">Month</a>
+      </li>
+    </ul>
   </div>
-  <div ng-switch-when="datechart">
+  <div ng-switch-when="dateChart">
     <canvas id="dateChart" height="400" width="300"></canvas>
   </div>
-  <div ng-switch-when="exercisechart">
-    exercisechart
+  <div ng-switch-when="exerciseChart">
+    <canvas id="exerciseChart" height="400" width="300"></canvas>
   </div>
 
 </div>

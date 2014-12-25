@@ -7,16 +7,19 @@ angular.module('gft')
 	restrict: 'A',
 	scope:true,
 	transclude:false,
-	controller: function($scope, workouts){
+	controller: function($scope, workouts, exercises){
 
 	    $scope.landmarks = {tab:'add'};
 	    $scope.setLandmark = function(k,v){
 		$scope.landmarks[k] = v;
 	    };
 
-	    workouts.get().then(function(workouts){
-		console.log(workouts);
-		$scope.workouts = workouts;
+	    workouts.get().then(function(ws){
+		$scope.workouts = ws;
+	    });
+
+	    exercises.get().then(function(es){
+		$scope.exercises = es;
 	    });
 
 	    // for adding a workout to the schedule

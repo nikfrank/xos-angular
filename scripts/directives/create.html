@@ -23,11 +23,21 @@
     list exercises
     -> +/-
     form
+    <br>
+    <br>
+    {{workouts}}
   </div>
   <div ng-switch-when="exercise">
     execise in library
     form
+    <br>
+    <br>
+    <div ng-repeat="ex in exercises">
+      {{ex.name}} - {{ex.duration}} - {{ex.instructions}}
+      <br>
+      {{ex.flex.toFixed(0)}} f - {{ex.str.toFixed(0)}} s - {{ex.cardio.toFixed(0)}} c
+      <br>
+      {{ex.media}} - {{ex.equipment}}
+    </div>
   </div>
 </div>
-
-{{workouts}}

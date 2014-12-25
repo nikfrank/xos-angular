@@ -52,6 +52,16 @@ angular.module('gft')
       }
 
 
+      this.get = function(){
+	  var def = $q.defer();
+
+	  fakehttp.post('/exercises').then(function(epon){
+	      def.resolve(epon.data);
+	  });
+
+	  return def.promise;
+      };
+
 
       // cache the exercises, make them queryable
       this.getByHash = function(hashOrHashes){
